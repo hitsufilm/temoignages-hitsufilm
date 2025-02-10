@@ -16,11 +16,12 @@ const TestimonyForm = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const { name, type, checked, value } = e.target;
+  setFormData({
+    ...formData,
+    [name]: type === "checkbox" ? checked : value
+  });
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
