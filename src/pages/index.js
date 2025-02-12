@@ -1,5 +1,4 @@
-import dynamic from 'next/dynamic'
-const TestimonyForm = dynamic(() => import('../components/TestimonyForm'), { ssr: false })
+import TestimonyForm from '../components/TestimonyForm'
 
 export default function Home() {
   return (
@@ -12,5 +11,5 @@ export default function Home() {
         <TestimonyForm />
       </div>
     </div>
-  );
+  )
 }
