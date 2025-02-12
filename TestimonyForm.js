@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const TestimonyForm = () => {
+  const [isClient, setIsClient] = useState(false);
   const [formData, setFormData] = useState({
     nom: '',
     prenom: '',
@@ -15,12 +16,20 @@ const TestimonyForm = () => {
   });
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
+
+  if (!isClient) {
+    return <div>Chargement...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 py-12">
