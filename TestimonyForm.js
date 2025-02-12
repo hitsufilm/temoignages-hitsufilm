@@ -1,8 +1,8 @@
-"use client";
-import React, { useState } from 'react';
+import dynamic from 'next/dynamic'
+import React from 'react'
 
 const TestimonyForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = React.useState({
     nom: '',
     prenom: '',
     age: '',
@@ -14,19 +14,13 @@ const TestimonyForm = () => {
     certification_verite: false,
     autorise_contact: false
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
 
   const handleChange = (e) => {
-  const { name, type, checked, value } = e.target;
-  setFormData({
-    ...formData,
-    [name]: type === "checkbox" ? checked : value
-  });
-};
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
   return (
@@ -175,7 +169,7 @@ const TestimonyForm = () => {
                   onChange={(e) => setFormData({...formData, certification_verite: e.target.checked})}
                 />
                 <label htmlFor="certification_verite" className="text-sm">
-                  Je soussigné(e), {formData.prenom || "________"} {formData.nom || "________"}, certifie que l'histoire que je m'apprête à raconter est authentique et exempte de toute fausse déclaration ou mensonge. Conformément à l'<strong>article 441-1 du Code pénal</strong>, « constitue un faux toute altération frauduleuse de la vérité de nature à causer un préjudice et accomplie par quelque moyen que ce soit ». Toute fausse déclaration volontaire peut engager ma responsabilité.
+                  Je soussigné(e), {formData.prenom} {formData.nom}, certifie que l'histoire que je m'apprête à raconter est authentique et exempte de toute fausse déclaration ou mensonge. Conformément à l'<strong>article 441-1 du Code pénal</strong>, « constitue un faux toute altération frauduleuse de la vérité de nature à causer un préjudice et accomplie par quelque moyen que ce soit ». Toute fausse déclaration volontaire peut engager ma responsabilité.
                 </label>
               </div>
 
@@ -193,4 +187,6 @@ const TestimonyForm = () => {
   );
 };
 
-export default TestimonyForm;
+export default dynamic(() => Promise.resolve(TestimonyForm), {
+  ssr: false
+})
