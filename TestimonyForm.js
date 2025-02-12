@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic'
-import React from 'react'
+import { useState } from 'react';
 
 const TestimonyForm = () => {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     nom: '',
     prenom: '',
     age: '',
@@ -14,7 +13,7 @@ const TestimonyForm = () => {
     certification_verite: false,
     autorise_contact: false
   });
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -187,6 +186,4 @@ const TestimonyForm = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(TestimonyForm), {
-  ssr: false
-})
+export default TestimonyForm;
