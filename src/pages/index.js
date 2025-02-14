@@ -26,7 +26,12 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-purple-100 to-pink-100 py-12">
       <div className="max-w-2xl mx-auto px-4">
         <div className="bg-white/90 backdrop-blur rounded-lg shadow-xl p-6">
-          <h1 className="text-3xl font-bold mb-6">Témoignages</h1>
+          <h1 className="text-3xl font-bold mb-2 text-center bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+  Partagez votre témoignage
+</h1>
+<p className="text-xl text-center text-gray-600 mb-6 italic">
+  "Donnez une voix à votre histoire avec hitsufilm"
+</p>
           <form 
             action="https://formspree.io/f/mbldknqz"
             method="POST"
